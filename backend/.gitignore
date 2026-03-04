@@ -1,0 +1,5 @@
+# Common ignore
+node_modules
+.env
+dist
+.vscode
