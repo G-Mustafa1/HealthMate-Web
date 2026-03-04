@@ -5,7 +5,6 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
-import AuthLayout from './layout/authLayout'
 import Sidebar from './components/Sidebar'
 import Home from './pages/dashboard/Home'
 import Report from './pages/dashboard/Report'
@@ -13,10 +12,11 @@ import Vitials from './pages/dashboard/Vitials'
 import ProtectedRoute from './components/ProtectedRoute'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkAuth } from './feature/authSlice'
+import AuthLayout from './layout/AuthLayout'
 
 function App() {
   const dispatch = useDispatch()
-  const { user, loading } = useSelector((state) => state.auth);  
+  const { user, loading } = useSelector((state) => state.auth);
   useEffect(() => {
     dispatch(checkAuth());
   }, [dispatch]);
