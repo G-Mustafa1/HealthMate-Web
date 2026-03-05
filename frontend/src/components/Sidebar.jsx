@@ -93,7 +93,7 @@ const Sidebar = () => {
             <div className="lg:hidden fixed top-0 left-0 right-0 z-40 rounded-none glass-card-strong border-b border-border/50 px-4 py-3 flex items-center justify-between">
                 <Link to="/home" className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
-                        <Stethoscope className="w-4 h-4 text-primary-foreground" />
+                        <Stethoscope className="w-4 h-4 text-white" />
                     </div>
                     <span className="font-bold text-foreground">HealthMate</span>
                 </Link>

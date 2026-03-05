@@ -25,18 +25,18 @@ const Login = () => {
             toast.success("Login successful!")
             navigate("/home")
         }
-        if (error) {
-            toast.error("Failed to login")
-        }
-    }, [user, error, navigate])
+    }, [user, navigate])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (!email.trim()) return toast.error("Email is required")
         if (!password.trim() || password.length < 8)
             return toast.error("Password must be at least 8 characters")
-
-        dispatch(login({ email, password }))
+        try {
+            await dispatch(login({ email, password })).unwrap();
+        } catch (error) {
+            toast.error(error?.error || "Failed to login")
+        }
     }
 
     return (

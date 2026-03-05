@@ -18,7 +18,7 @@ const Register = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-     const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
         if (!fullname.trim()) return toast.error("Enter your name")
@@ -26,15 +26,14 @@ const Register = () => {
         if (!password.trim() || password.length < 8)
             return toast.error("Password must be at least 8 characters long")
 
-        dispatch(register({ fullname, email, password }))
-            .unwrap()
-            .then(() => {
-                toast.success("Registered successfully! Please login.")
-                navigate("/")
-            })
-            .catch(err => {
-                toast.error(err?.error || "Failed to register")
-            })
+        try {
+            await dispatch(register({ fullname, email, password })).unwrap()
+
+            toast.success("Registered successfully! Please login.")
+            navigate("/")
+        } catch (err) {
+            toast.error(err?.error || "Failed to register")
+        }
     }
 
 

@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
+import Loader from "./Loader";
 
 const ProtectedRoute = () => {
     const { user, loading } = useSelector((state) => state.auth);
-    if (loading) return <div className="flex h-screen items-center justify-center">Loading...</div>;
+    if (loading) return <Loader />;
+    if (!user) return <Navigate to="/" replace />;
 
-    if (!user) return <Navigate to="/" replace/>;
 
-    
     return <Outlet />;
 };
 

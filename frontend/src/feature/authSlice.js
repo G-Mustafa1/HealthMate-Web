@@ -9,7 +9,7 @@ export const login = createAsyncThunk(
             const { data } = await api.post("/auth/login", credentials, {
                 withCredentials: true,
             });
-            return data;
+            return data;            
         } catch (err) {
             return rejectWithValue(err.response?.data || "Something went wrong");
         }
@@ -47,8 +47,6 @@ export const checkAuth = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const { data } = await api.get("/auth/user", { withCredentials: true });
-            console.log('checkAuth');
-            console.log(data);
             return data;
         } catch (err) {
             return rejectWithValue(err.response?.data || "Not authenticated");
@@ -79,6 +77,7 @@ const authSlice = createSlice({
             .addCase(login.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload || null;
+                
             })
 
             .addCase(register.pending, (state) => {
