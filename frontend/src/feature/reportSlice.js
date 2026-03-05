@@ -1,5 +1,6 @@
 import { api } from "@/api/api";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { data } from "react-router-dom";
 
 // Add/upload a report
 export const addReport = createAsyncThunk(
@@ -23,6 +24,7 @@ export const getReports = createAsyncThunk(
     try {
       const { data } = await api.get("/report/all-reports", {
         withCredentials: true,
+        
       });
       return data.reports;
     } catch (err) {
@@ -51,7 +53,7 @@ export const deleteReport = createAsyncThunk(
   "report/deleteReport",
   async (id, { rejectWithValue }) => {
     try {
-      const { data } = await api.delete(`/report/delete-report/${id}`, {
+      const { data } = await api.delete(`/report/delete/${id}`, {
         withCredentials: true,
       });
       return data.report;

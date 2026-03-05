@@ -31,7 +31,7 @@ const Sidebar = () => {
     const handleLogout = () => {
         toast.success("Logged out successfully");
         dispatch(logout());
-        navigate("/");
+        // navigate("/");
     };
 
     const renderNavLinks = (isMobile = false) =>

@@ -1,4 +1,3 @@
-// Register.jsx
 import React, { use, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, ArrowRight, CheckCircle, Sparkles } from 'lucide-react'
@@ -14,27 +13,28 @@ const Register = () => {
     const [fullname, setFullname] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [errorMsg, setError] = useState('')
     const [showPassword, setShowPassword] = useState(false)
     const { user, loading, error } = useSelector(state => state.auth)
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        if (user) {
-            toast.success('Login successful')
-            navigate('/home')
-        };
-        if (error) setError(error || 'Something went wrong');
-    }, [user, navigate]);
-
-    const handleSubmit = (e) => {
+     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!fullname.trim() || !email.trim() || !password.trim()) {
-            setError('All fields are required')
-            return
-        }
+
+        if (!fullname.trim()) return toast.error("Enter your name")
+        if (!email.trim()) return toast.error("Enter your email")
+        if (!password.trim() || password.length < 8)
+            return toast.error("Password must be at least 8 characters long")
+
         dispatch(register({ fullname, email, password }))
+            .unwrap()
+            .then(() => {
+                toast.success("Registered successfully! Please login.")
+                navigate("/")
+            })
+            .catch(err => {
+                toast.error(err?.error || "Failed to register")
+            })
     }
 
 
@@ -70,7 +70,7 @@ const Register = () => {
                             id="fullname"
                             value={fullname}
                             onChange={(e) => setFullname(e.target.value)}
-                            placeholder="Aap ka naam"
+                            placeholder="Your Full Name"
                             className="register-input h-11 rounded-[10px] text-sm transition-all duration-200"
                             style={{
                                 background: 'hsl(160,20%,96%)',
@@ -129,22 +129,7 @@ const Register = () => {
                                 {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                             </button>
                         </div>
-
-
                     </div>
-
-                    {/* Error */}
-                    {errorMsg && (
-                        <div className="flex items-center gap-2 rounded-[9px] px-3 py-2.5 text-sm"
-                            style={{
-                                background: 'hsl(0,100%,97.5%)',
-                                border: '1px solid hsl(0,80%,90%)',
-                                color: 'hsl(0,72%,45%)',
-                            }}>
-                            <div className="w-1.5 h-1.5 rounded-full bg-destructive shrink-0" />
-                            {errorMsg}
-                        </div>
-                    )}
 
                     {/* Submit */}
                     <Button
@@ -161,7 +146,7 @@ const Register = () => {
                     >
                         {loading ? (
                             <>
-                                <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                                <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin cursor-none" />
                                 <span>Creating account...</span>
                             </>
                         ) : (

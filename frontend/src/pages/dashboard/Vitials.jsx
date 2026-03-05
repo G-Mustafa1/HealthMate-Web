@@ -15,7 +15,6 @@ const Vitals = () => {
   const [weight, setWeight] = useState("");
   const [note, setNote] = useState("");
 
-  // Fetch vitals on mount
   useEffect(() => {
     dispatch(getVitals());
   }, [dispatch]);

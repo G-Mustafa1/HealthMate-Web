@@ -32,7 +32,7 @@ export const signup = async (req, res) => {
 
         await newUser.save();
 
-        res.status(200).json({ success: true, message: 'User signed up successfully', user: newUser });
+        res.status(200).json({ success: true, message: 'User signed up successfully',});
 
     } catch (error) {
         console.error('Error during signup:', error.message);

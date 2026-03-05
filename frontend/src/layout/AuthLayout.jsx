@@ -6,18 +6,18 @@ const AuthLayout = () => {
   const features = [
     {
       icon: <FileText className="w-4 h-4" />,
-      title: 'Reports Upload karein',
-      desc: 'Medical reports securely store karein AI analysis ke saath.',
+      title: 'Upload Reports',
+      desc: 'Securely store your medical reports with AI-powered analysis.',
     },
     {
       icon: <Heart className="w-4 h-4" />,
       title: 'AI Health Analysis',
-      desc: 'Fori health summary English aur Roman Urdu mein.',
+      desc: 'Get instant health summaries in English and Roman Urdu.',
     },
     {
       icon: <TrendingUp className="w-4 h-4" />,
-      title: 'Progress Track karein',
-      desc: 'Vitals monitor karein aur medical timeline dekhein.',
+      title: 'Track Progress',
+      desc: 'Monitor your vitals and view your medical timeline.',
     },
   ]
 
@@ -99,7 +99,7 @@ const AuthLayout = () => {
               <div>
                 <h1 className="text-[28px] font-extrabold tracking-tight text-foreground">HealthMate</h1>
                 <p className="text-[13px] font-medium mt-0.5" style={{ color: 'hsl(168,60%,40%)' }}>
-                  Sehat ka Smart Dost
+                  Your Smart Health Companion
                 </p>
               </div>
             </div>
@@ -117,12 +117,12 @@ const AuthLayout = () => {
               </div>
 
               <h2 className="text-[38px] font-extrabold leading-[1.18] tracking-tight text-foreground mb-3">
-                Apni Sehat,<br />
-                <span className="auth-grad-text">Apne Haath Mein</span>
+                Your Health,<br />
+                <span className="auth-grad-text">In Your Hands</span>
               </h2>
 
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Medical reports upload karein, AI se analysis hasil karein, aur apni health journey track karein — sab ek jagah.
+                Upload medical reports, get AI-driven analysis, and track your health journey — all in one place.
               </p>
             </div>
 
@@ -153,7 +153,7 @@ const AuthLayout = () => {
                   </div>
                 </div>
               ))}
-            </div>            
+            </div>
           </div>
 
           <div className="auth-right-panel">
@@ -166,4 +166,3 @@ const AuthLayout = () => {
 }
 
 export default AuthLayout
-

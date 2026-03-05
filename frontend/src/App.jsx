@@ -16,17 +16,16 @@ import AuthLayout from './layout/AuthLayout'
 
 function App() {
   const dispatch = useDispatch()
-  const { user, loading } = useSelector((state) => state.auth);
+
   useEffect(() => {
     dispatch(checkAuth());
   }, [dispatch]);
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
+
   return (
     <>
       <Routes>
-        <Route element={<ProtectedRoute user={user} loading={loading} />}>
+        <Route element={<ProtectedRoute />}>
           <Route element={<Sidebar />}>
             <Route path="/home" element={<Home />} />
             <Route path="/report" element={<Report />} />
