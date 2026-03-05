@@ -52,11 +52,11 @@ const UploadModal = ({ open, onClose }) => {
   return (
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-sm">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 40 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
             className="bg-white w-105 p-6 rounded-2xl shadow-xl"
           >
             {/* Header */}
@@ -76,7 +76,7 @@ const UploadModal = ({ open, onClose }) => {
                   placeholder="Enter report title..."
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full mt-1 px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-400"
+                  className="w-full mt-1 px-3 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-black"
                 />
               </div>
 
@@ -95,7 +95,7 @@ const UploadModal = ({ open, onClose }) => {
                   setDrag(false);
                 }}
               >
-                <Upload className="w-8 h-8 text-blue-500 mb-2" />
+                <Upload className="w-8 h-8 text-gradient mb-2" />
                 <p className="text-sm text-gray-600 text-center">
                   {file ? "File selected below" : "Drag & drop or click to upload"}
                 </p>
@@ -128,7 +128,7 @@ const UploadModal = ({ open, onClose }) => {
               {/* Upload Button */}
               <button
                 disabled={loading}
-                className={`w-full py-2 rounded-xl text-white font-medium transition ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-blue-500 hover:bg-blue-600"
+                className={`w-full py-2 rounded-xl text-white font-medium transition ${loading ? "bg-gray-400 cursor-not-allowed" : "gradient-bg hover:opacity-90 transition-opacity"
                   }`}
               >
                 {loading ? "Uploading..." : "Upload Report"}

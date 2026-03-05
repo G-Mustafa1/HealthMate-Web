@@ -87,7 +87,7 @@ const Home = () => {
         <div className="flex gap-3">
           <Link
             to="/report"
-            className="gradient-bg text-primary-foreground px-5 py-2.5 rounded-xl font-medium flex items-center gap-2 hover:opacity-90 transition-opacity shadow-md text-sm"
+            className="gradient-bg text-white px-5 py-2.5 rounded-xl font-medium flex items-center gap-2 hover:opacity-90 transition-opacity shadow-md text-sm"
           >
             <Plus className="w-4 h-4" />
             Upload Report

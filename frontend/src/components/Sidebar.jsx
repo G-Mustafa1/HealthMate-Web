@@ -42,7 +42,7 @@ const Sidebar = () => {
                     to={item.path}
                     onClick={() => isMobile && setMobileOpen(false)}
                     className={({ isActive }) =>
-                        `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${isActive
+                        `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 hover:bg-gray-100 ${isActive
                             ? "gradient-bg text-primary-foreground shadow-md text-white"
                             : "text-muted-foreground hover:text-foreground hover:bg-muted/60"
                         }`
@@ -56,11 +56,10 @@ const Sidebar = () => {
 
     return (
         <div className="min-h-screen bg-[#f0f7f5] page-gradient flex">
-            {/* Desktop Sidebar */}
             <aside className="hidden lg:flex flex-col shadow-xl rounded-none bg-white w-64 glass-card-strong border-r border-border/50 p-6 fixed h-full z-30">
                 <Link to="/home" className="flex items-center gap-3 mb-10">
                     <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-                        <Stethoscope className="w-5 h-5 text-primary-foreground" />
+                        <Stethoscope className="w-5 h-5 text-white" />
                     </div>
                     <div>
                         <h1 className="font-bold text-lg text-foreground">HealthMate</h1>
@@ -72,7 +71,7 @@ const Sidebar = () => {
 
                 <div className="border-t border-border/50 pt-4 mt-4">
                     <div className="flex items-center gap-3 px-4 mb-3">
-                        <div className="w-9 h-9 rounded-full gradient-bg flex items-center justify-center text-primary-foreground font-bold text-sm">
+                        <div className="w-9 h-9 rounded-full gradient-bg flex items-center justify-center text-white font-bold text-sm">
                             {user?.fullname?.charAt(0) || "U"}
                         </div>
                         <div className="flex-1 min-w-0">
@@ -82,7 +81,7 @@ const Sidebar = () => {
                     </div>
                     <button
                         onClick={handleLogout}
-                        className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-destructive hover:bg-destructive/10 transition-all w-full"
+                        className="flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm text-muted-foreground hover:bg-red-500 hover:text-white hover:bg-opacity-10 transition-all w-full"
                     >
                         <LogOut className="w-4 h-4" />
                         Logout
@@ -124,7 +123,7 @@ const Sidebar = () => {
                             <div className="flex justify-between">
                                 <div className="gap-3 mb-8 flex items-center justify-center">
                                     <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
-                                    <Stethoscope className="w-5 h-5 text-primary-foreground" />
+                                    <Stethoscope className="w-5 h-5 text-white  " />
                                 </div>
                                 <div>
                                     <h1 className="font-bold text-lg text-foreground">HealthMate</h1>
@@ -138,7 +137,7 @@ const Sidebar = () => {
 
                             <button
                                 onClick={handleLogout}
-                                className="flex items-center gap-3 px-4 py-3 mt-8 rounded-xl text-sm text-muted-foreground hover:text-destructive w-full"
+                                className="flex items-center gap-3 px-4 py-3 mt-8 rounded-xl text-sm text-muted-foreground hover:bg-red-500 hover:text-white hover:bg-opacity-10 transition-all duration-200 w-full"
                             >
                                 <LogOut className="w-4 h-4" />
                                 Logout

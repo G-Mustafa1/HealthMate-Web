@@ -112,7 +112,7 @@ const Vitals = () => {
           <>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={{ opacity: 1 }} 
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/20 backdrop-blur-sm z-50"
               onClick={() => setShowAdd(false)}
@@ -147,7 +147,7 @@ const Vitals = () => {
                     <label className="block text-sm font-medium text-foreground mb-1.5">Notes (optional)</label>
                     <textarea value={note} onChange={(e) => setNote(e.target.value)} placeholder="How are you feeling today?" rows={2} className="w-full px-4 py-3 rounded-xl bg-muted/50 border border-gray-300 text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"/>
                   </div>
-                  <button onClick={handleSave} className="w-full gradient-bg text-primary-foreground py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity">
+                  <button onClick={handleSave} className="w-full gradient-bg text-white py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity">
                     Save Vitals
                   </button>
                 </div>

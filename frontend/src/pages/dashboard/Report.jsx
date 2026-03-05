@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FileText, Plus, Trash2, Image } from "lucide-react";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteReport, getReports,  } from "@/feature/reportSlice";
+import { deleteReport, getReports, } from "@/feature/reportSlice";
 import UploadModal from "@/components/UploadModal";
 import ReportDetailModal from "@/components/ReportDetailModal";
 
@@ -27,13 +27,16 @@ const Report = () => {
       {/* HEADER */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">📁 Medical Reports</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl font-bold tracking-tight">📁 Medical Reports</motion.h1>
           <p className="text-gray-500 text-sm">AI powered report insights</p>
         </div>
 
         <button
           onClick={() => setShowUpload(true)}
-          className="bg-linear-to-r from-blue-500 to-indigo-500 px-5 py-2 rounded-xl text-white flex items-center gap-2 shadow hover:scale-105 transition"
+          className="gradient-bg px-5 py-2 rounded-xl text-white flex items-center gap-2 shadow hover:scale-105 transition"
         >
           <Plus className="w-4 h-4" />
           Upload
@@ -45,19 +48,21 @@ const Report = () => {
 
       {/* GRID */}
       <div className="grid md:grid-cols-3 gap-5">
-        {reports?.map((r) => (
+        {reports?.map((r, i) => (
           <motion.div
             key={r._id}
-            whileHover={{ scale: 1.03 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.2 }}
             onClick={() => setSelectedReport(r)}
-            className="bg-white p-5 rounded-2xl shadow hover:shadow-lg cursor-pointer border transition"
+            className="bg-white p-5 rounded-2xl shadow hover:shadow-lg cursor-pointer border transition-shadow"
           >
             <div className="flex justify-between mb-3">
-              <div className="bg-blue-100 p-2 rounded-lg">
+              <div className="gradient-bg p-2 rounded-lg">
                 {r.fileType === "pdf" ? (
-                  <FileText className="text-blue-500 w-5 h-5" />
+                  <FileText className="text-white w-5 h-5" />
                 ) : (
-                  <Image className="text-blue-500 w-5 h-5" />
+                  <Image className="text-white w-5 h-5" />
                 )}
               </div>
 
